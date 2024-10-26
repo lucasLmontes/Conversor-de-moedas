@@ -1,0 +1,162 @@
+$color-primary: #1565c0;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header-title {
+  position: relative;
+  padding-left: 40px;
+  color:#333;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/10693/10693169.png');
+    background-size: cover;
+  }
+}
+
+mat-toolbar {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+
+  &.mat-toolbar-primary {
+    background-color: $color-primary;
+  }
+}
+
+.spacer {
+    flex: 1 1 auto;
+  }
+  
+mat-toolbar a {
+color: #333;
+text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+div {
+  padding: 1.5rem;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 1rem;
+
+  mat-label {
+    font-size: 1rem;
+    color: #333;
+  }
+
+  input,
+  mat-select {
+    font-size: 1.2rem;
+  }
+}
+
+button {
+  margin-top: 1rem;
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.75rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: darken($color-primary, 10%);
+  }
+}
+
+.erro,
+div[ngIf="resultadoConversao"] {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  color: #fff;
+
+  &.erro {
+    background-color: #e57373;
+  }
+
+  &.resultado {
+    background-color: #4caf50;
+  }
+}
+
+table.mat-table {
+  width: 100%;
+  margin-top: 1rem;
+  background-color: #fafafa;
+  border-radius: 8px;
+  overflow: hidden;
+
+  th {
+    background-color: $color-primary;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.75rem;
+    text-align: left;
+  }
+
+  td {
+    padding: 0.75rem;
+    text-align: left;
+    font-size: 1rem;
+
+    &:nth-child(even) {
+      background-color: #f0f0f0;
+    }
+  }
+}
+
+mat-icon-button.color-warn {
+  color: #e53935;
+
+  &:hover {
+    color: darken(#e53935, 10%);
+  }
+}
+
+.loading {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: $color-primary;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.search-bar {
+  margin-bottom: 1.5rem;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+mat-paginator {
+  margin-top: 1rem;
+
+  button {
+    color: $color-primary;
+  }
+
+  .mat-paginator-range-label {
+    font-size: 1rem;
+  }
+}

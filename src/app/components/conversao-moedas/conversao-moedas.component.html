@@ -1,0 +1,46 @@
+<mat-toolbar color="primary">
+  <span>Conversor de Moedas</span>
+</mat-toolbar>
+
+<div class="container">
+  <form [formGroup]="conversaoForm" (ngSubmit)="converter()">
+    <mat-form-field appearance="fill">
+      <mat-label>Moeda de Origem</mat-label>
+      <mat-select formControlName="moedaOrigem">
+        <mat-option *ngFor="let moeda of dataSource.data" [value]="moeda.simbolo">
+          {{ moeda.nome }} ({{ moeda.simbolo }})
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="conversaoForm.get('moedaOrigem')?.hasError('required')">Moeda de origem é obrigatória.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Moeda de Destino</mat-label>
+      <mat-select formControlName="moedaDestino">
+        <mat-option *ngFor="let moeda of dataSource.data" [value]="moeda.simbolo">
+          {{ moeda.nome }} ({{ moeda.simbolo }})
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="conversaoForm.get('moedaDestino')?.hasError('required')">Moeda de destino é obrigatória.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Valor a Converter</mat-label>
+      <input matInput type="number" formControlName="valorParaConverter" />
+      <mat-error *ngIf="conversaoForm.get('valorParaConverter')?.hasError('required')">Valor é obrigatório.</mat-error>
+      <mat-error *ngIf="conversaoForm.get('valorParaConverter')?.hasError('min')">Valor deve ser maior que 0.</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Converter</button>
+
+    <div *ngIf="erro" class="erro">
+      {{ erro }}
+    </div>
+
+    <div *ngIf="resultadoConversao">
+      <h3>Resultado da Conversão</h3>
+      <p>Valor Convertido: {{ resultadoConversao.valorConvertido | number: '1.2-2' }}</p>
+      <p>Taxa de Conversão: {{ resultadoConversao.taxaConversao | number: '1.4-4' }}</p>
+    </div>
+  </form>
+</div>
